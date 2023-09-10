@@ -1,28 +1,72 @@
 // TODO: cat interface
 
-import { Point } from 'geojson';
-import { Document, Types } from 'mongoose';
+import {Point} from 'geojson';
 
-interface Cat extends Document {
+interface Cat {
+    _id: any;
     cat_name: string;
     weight: number;
     filename: string;
-    birthdate: string;
+    birthdate: Date;
     location: {
-        type: string;
-
-        coordinates: Point;
+      type: Point;
+      coordinates: number[];
     };
     owner: {
-        _id: Types.ObjectId;
-        user_name: string;
-        email: string;
+      _id: number;
+      user_name: string;
+      email: string;
     };
-}
-
-
-
-export {Cat};
+  }
+  
+  interface GetCat extends Partial<Cat> {
+    cat_name: string;
+    weight: number;
+    birthdate: Date;
+    location: {
+      type: Point;
+      coordinates: number[];
+    };
+    owner: {
+      _id: number;
+      user_name: string;
+      email: string;
+    };
+  }
+  
+  interface PostCat extends Partial<Cat> {
+    cat_name: string;
+    weight: number;
+    filename: string;
+    birthdate: Date;
+    location: {
+      type: Point;
+      coordinates: number[];
+    };
+    owner: {
+      _id: number;
+      user_name: string;
+      email: string;
+    };
+  }
+  
+  interface PutCat extends Partial<Cat> {
+    cat_name?: string;
+    weight?: number;
+    filename?: string;
+    birthdate?: Date;
+    location?: {
+      type: Point;
+      coordinates: number[];
+    };
+    owner?: {
+      _id: number;
+      user_name: string;
+      email: string;
+    };
+  }
+  
+    export {Cat, GetCat, PostCat, PutCat};
 
 
 

@@ -9,44 +9,36 @@ const Schema = mongoose.Schema;
 const CatSchema = new Schema({
     cat_name: {
         type: String,
-        required: 'Enter a cat name'
+  
     },
     weight: {
         type: Number,
-        required: 'Enter a weight'
+        required: true,
+
     },
     filename: {
         type: String,
-        required: 'Enter a filename'
+
     },
     birthdate: {
         type: String,
-        required: 'Enter a birthdate'
+        required: true,
+
     },
     location: {
         type: {
             type: String,
             enum: ['Point'],
-            required: true
+            required: true,
+            coordinates: [Number, Number],
         },
-        coordinates: {
-            type: [Number],
-            required: true
-        }
     },
     owner: {
         _id: {
-            type: mongoose.Types.ObjectId,
-            required: 'Enter an owner id'
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            ref: 'User',
         },
-        user_name: {
-            type: String,
-            required: 'Enter a user name'
-        },
-        email: {
-            type: String,
-            required: 'Enter an email'
-        }
     }
 });
 
